@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary pt-3 pb-3">
+    <div class="container d-flex justify-content-start">
+        <i class="fa-sharp fa-solid fa-building-columns fa-fade fa-xl" style="color: #ffffff;"></i>
+        <a class="navbar-brand ms-3 fw-bold" routerLink="">SBA - State Bank of Area</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              
+                <li class="nav-item"><a class="nav-link active" aria-current="page" routerLink="login">Sign In</a></li>
+                <li class="nav-item bg-danger rounded-2 ms-4"><a class="nav-link active" routerLink="register">Join Now!</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div> -->
+    </div>
+  </nav>
+<div class="form-body d-flex justify-content-center align-items-center">
+    <div class="row">
+        <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items">
+                    <h3>Register Today</h3>
+                    <p>Fill in the data below to register/access Online service</p>
+                    <!-- Form forGroup ngSubmit -->
+                    <form [formGroup]="registerForm" (ngSubmit)="register()">
+                            <!-- username -->
+                           <div><input name="username" formControlName="username" type="text" placeholder="Username"></div>
+                           <!-- username Validation -->
+                           <div *ngIf="this.registerForm.get('username')?.errors && this.registerForm.get('username')?.touched" class="text-danger">
+                            Invalid Username
+                           </div>
+                           <!-- Account number  -->
+                           <div><input name="acno" formControlName="acno" type="text" placeholder="A/C number"></div>
+                           <!-- acno Validation -->
+                           <div *ngIf="this.registerForm.get('acno')?.errors && this.registerForm.get('acno')?.touched" class="text-danger">
+                            Invalid Account
+                           </div>
+                           <!-- Password Validation -->
+                           <div><input name="password" formControlName="password" type="password" placeholder="Password"></div>
+                           <!-- Password Validation -->
+                           <div *ngIf="this.registerForm.get('password')?.errors && this.registerForm.get('password')?.touched" class="text-danger">
+                            Invalid Password
+                           </div>
+                       
+                        <div class="form-button d-flex flex-column align-items-center">
+                            <!-- type="submit" is required for 'ngSubmit' -->
+                            <button type="submit" class="btn btn-light fw-bold text-primary mt-3 mb-3 ps-5 pe-5">Register</button>
+                            <hr>
+                            <div class="d-flex align-items-center">
+                                <h6 class="text-light"> Already a member!</h6>
+                                <button routerLink="/login" class="btn btn-light fw-bold ms-4 ps-5 pe-5">Login</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

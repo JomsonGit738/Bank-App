@@ -1,0 +1,174 @@
+<!-- navigation bar -->
+<div class="dashboardMain">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary pt-3 pb-3">
+        <div class="container d-flex justify-content-start">
+            <i class="fa-sharp fa-solid fa-building-columns fa-fade fa-xl" style="color: #ffffff;"></i>
+            <a class="navbar-brand ms-3 fw-bold" routerLink="">SBA - State Bank of Area</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  
+                    <!-- <li class="nav-item"><a class="nav-link active" aria-current="page" routerLink="login">Sign In</a></li>
+                    <li class="nav-item bg-danger rounded-2 ms-4"><a class="nav-link active" routerLink="register">Join Now!</a></li> -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown"  role="button" data-bs-toggle="dropdown" aria-expanded="false">Settings <i class="fa-solid fa-gears"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a href="#staticBackdropdelete" data-bs-toggle="modal" data-bs-target="#staticBackdropdelete" class="dropdown-item" >A/C Delete</a></li>
+                            <li><a (click)="logout()" class="dropdown-item" >Sign Out</a></li>
+                            <!-- <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" >Sign Out</a></li> -->
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+      </nav>
+    
+      <!-- body functions -->
+      <div class="container mt-5 px-4 py-5 bg-light" id="featured-3">
+        <h2 class="pb-2 border-bottom text-primary fw-bold">Welcome {{user}}</h2>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+          <!-- Balance enquiry -->
+          <div class="feature col">
+            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-light bg-gradient fs-2 mb-3">
+                <i class="fa-solid fa-sack-dollar"></i>
+            </div>
+            <h3 class="fs-2 text-body-emphasis">Balance Enquiry</h3>
+            <p>pay attention to the type of balance that you see. Most banks show an available balance (which tells you how much you can afford to spend or withdraw today) as well as a total account balance.</p>
+            <a (click)="getBalance()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" href="#" class="icon-link">
+              Send request
+              <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+            </a>
+          </div>
+          <!-- Fund Transfer -->
+          <div class="feature col">
+            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-light bg-gradient fs-2 mb-3">
+                <i class="fa-sharp fa-solid fa-money-bill-transfer"></i>
+            </div>
+            <h3 class="fs-2 text-body-emphasis">Fund Transfer</h3>
+            <p>Move money between your U.S. Bank accounts – and to and from accounts at other banks. With U.S. Bank mobile and online banking, you can safely control your money wherever you are.</p>
+            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#" class="icon-link">
+              Transfer Now!
+              <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+            </a>
+          </div>
+          <!-- transactions -->
+          <div class="feature col">
+            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-light bg-gradient fs-2 mb-3">
+                <i class="fa-solid fa-list"></i>
+            </div>
+            <h3 class="fs-2 text-body-emphasis">Transactions</h3>
+            <p>They don’t involve any sales but rather other processes within the organization. This may include computing the salary of the employees and estimating the depreciation value of a certain asset.</p>
+            <a routerLink="/user/transactions" class="icon-link">
+              View Transactions
+              <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- sticky footer -->
+      <footer class="footer mt-auto py-3 bg-dark">
+        <div class="container">
+          <span class="text-light">SBA &copy; All rights reserved</span>
+        </div>
+      </footer>
+</div>
+
+
+<!-- balance Offcanvas Codes -->
+<div *ngIf="showOffCanvas" class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Balance Enquiry</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <img width="100px" class="img-fluid" src="https://th.bing.com/th/id/OIP.ROEc2ftZko1VKmULCtxH8AHaHa?pid=ImgDet&rs=1" alt="">
+    <div>
+      <h5 class="fw-bold mt-3">Hello User</h5>
+      <p>Your Current Balance is: {{balance}}</p>    
+    </div>
+    <!-- <div class="dropdown mt-3">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+        Dropdown button
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div> -->
+  </div>
+</div>
+
+<!-- Fund transfer Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Fund Transfer Form</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="transferform">
+          <form>
+            <div class="form-floating mb-3">
+              <input name="creditAcno" formControlName="creditAcno"  type="number" class="form-control" id="floatingInput" placeholder="name@example.com">
+              <label for="floatingInput">Credit Acno</label>
+              <!-- creditAcno Validation -->
+              <div *ngIf="this.transferform.get('creditAcno')?.errors && this.transferform.get('creditAcno')?.touched" class="text-danger">
+                Invalid account number
+               </div>
+            </div>
+            <div class="form-floating mb-3">
+              <input name="creditAmount" formControlName="creditAmount" type="number" class="form-control" id="floatingInput" placeholder="name@example.com">
+              <label for="floatingInput">Credit Amount</label>
+              <!-- creditAcno Validation -->
+              <div *ngIf="this.transferform.get('creditAmount')?.errors && this.transferform.get('creditAmount')?.touched" class="text-danger">
+                Invalid creadit amount
+               </div>
+            </div>
+            <div class="form-floating">
+              <input name="profilePswd" formControlName="profilePswd" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+              <label for="floatingPassword">Profile Password</label>
+              <!-- creditAcno Validation -->
+              <div *ngIf="this.transferform.get('profilePswd')?.errors && this.transferform.get('profilePswd')?.touched" class="text-danger">
+                Invalid password
+               </div>
+            </div>
+            <!-- transfer success msg -->
+            <h6 style="color: green;">{{transferSucessMSG}}</h6>
+            <!-- transfer Error msg -->
+            <h6 style="color: red;">{{transferErrorMSG}}</h6>
+          </form>
+        </form>
+      </div>
+      
+      
+
+      <div class="modal-footer">
+        <button (click)="cancelTransfer()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button [disabled]="!handleTranferButton" (click)="transfer()" type="button" class="btn btn-primary">Transfer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- account deletion Modal -->
+<!-- Modal -->
+<div class="modal fade" id="staticBackdropdelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete Account Confirmation</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure, Do you want to delete Account?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancel</button>
+        <button data-bs-dismiss="modal" (click)="deleteMyAcno()" type="button" class="btn btn-danger">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
